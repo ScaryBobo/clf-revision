@@ -1,0 +1,66 @@
+<button type="button" class="btn btn-primary" (click)="addContactRows()"> Add Row</button>
+
+<form [formGroup]="contactForm" (ngSubmit)="processForm1()">
+    <div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Mobile</th>
+                </tr>
+            </thead>
+
+            <tbody formArrayName="contacts">
+                <tr *ngFor="let item of contactDetails.controls" [formGroup]="item">
+                    <td>
+                        <input type="text" formControlName="name">
+                    </td>
+                    <td>
+                        <input type="email" formControlName="email">
+                    </td>
+                    <td>
+                        <input type="number" formControlName="mobile">
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <button type="submit" class="btn btn-warning">Submit</button>
+    </div>
+</form>
+
+
+
+<ng-container *ngIf="updateForm" >
+<form [formGroup]="updateForm" (ngSubmit)="updateContactList()">
+    <div>
+        <table>
+            <thead>
+                <th></th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Mobile</th>
+            </thead>
+
+            <tbody>
+                <tr>
+                    <td>
+                        <input type="hidden" formControlName="id">
+                    </td>
+                    <td>
+                        <input type="text" formControlName="name">
+                    </td>
+                    <td>
+                        <input type="email" formControlName="email">
+                    </td>
+                    <td>
+                        <input type="number" formControlName="mobile">
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <button type="submit" class="btn btn-primary">Update</button>
+    </div>
+
+</form>
+</ng-container>

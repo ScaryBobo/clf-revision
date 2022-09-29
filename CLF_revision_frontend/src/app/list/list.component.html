@@ -1,0 +1,34 @@
+<div>
+    <div>
+        <h2>List Of Contacts</h2>
+    </div>
+
+    <div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Mobile</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let contact of contactList; let idx = index">
+                    <td>{{contact.name}}</td>
+                    <td>{{contact.email}}</td>
+                    <td>{{contact.mobile}}</td>
+                    <td>
+                        <button type="button" class="btn btn-primary" (click)="asyncDeleteContact(idx)">X</button>
+                    </td>
+                    <td>
+                        <button type="button" class="btn btn-primary" (click)="updateContact(idx)">Update</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <button type="button" [routerLink]="['/']">Back to home</button>
+    </div>
+</div>
